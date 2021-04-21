@@ -41,11 +41,16 @@
 					<div class="card-body">
 						<p id="error_message" class="text-center"></p>
 						<label>Choose a color: </label>
-						<div id="colorpicker" data-jscolor="{preset:'dark', value: 'rgb(0, 0, 0)'}"></div>
 
-						<button class="btn btn-primary mt-4" id="guess">Guess</button>
-
-						<p id="result" class="mt-3"></p>
+						<div class="row">
+							<div class="col-4">
+								<div id="colorpicker" data-jscolor="{preset:'dark', value: 'rgb(0, 0, 0)', position: 'top'}"></div>
+							</div>
+							<div class="col-6">
+								<button class="btn btn-primary" id="guess">Guess</button>
+								<p id="result" class="mt-2"></p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

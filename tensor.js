@@ -97,7 +97,7 @@ export default class Tensor
 		this.model.add(hidden_layer)
 		this.model.add(output_layer)
 
-		let learning_rate = 0.5
+		let learning_rate = 0.2
 		const optimizer = tf.train.sgd(learning_rate)
 
 		this.model.compile({
@@ -149,7 +149,7 @@ export default class Tensor
 	{
 		console.log("getting hidden layer")
 		return tf.layers.dense({
-			units: 8,
+			units: 40,
 			activation: 'sigmoid',
 			inputDim: 3
 		})
