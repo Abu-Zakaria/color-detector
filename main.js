@@ -116,22 +116,35 @@ function dumpData()
 
 	database.collection('colors').get()
 		.then(querySnapshot => {
+			let dumped_data_table = document.querySelector('#dumped_data table tbody')
+			
 			querySnapshot.forEach(doc => {
 				let data = doc.data()
 				console.log(doc.id, ' => ', doc.data())
-				colors.push({
+				let color = {
 					id: doc.id,
 					r: data.r,
 					g: data.g,
 					b: data.b,
 					label: data.label
-				})
+				};
+				colors.push()
+
+				let content = "id: " + color.id + ", label: " + color.label
+
+				const tr = document.createElement('tr')
+				const td = document.createElement('td')
+
+				const newContent = document.createTextNode(content)
+
+				td.appendChild(newContent)
+				tr.appendChild(td)
+
+				dumped_data_table.appendChild(tr)
+
+				tr.style.backgroundColor = data.label
 			})
 
-			let content = JSON.stringify(colors)
-
-			let dumped_data = document.querySelector('#dumped_data')
-			dumped_data.innerHTML = content
 		})
 }
 
