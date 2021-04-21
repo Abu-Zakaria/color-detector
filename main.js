@@ -94,7 +94,7 @@ function submitData(button)
 	let name = button.getAttribute('data-name')
 	let message_el = document.querySelector('#submission_message')
 
-	database.collection('colors').add({
+	database.collection('colors-2').add({
 		r: rgb.r,
 		g: rgb.g,
 		b: rgb.b,
@@ -123,7 +123,7 @@ export function dumpData()
 
 	let colors = []
 
-	database.collection('colors').get()
+	database.collection('colors-2').get()
 		.then(querySnapshot => {
 
 			let counter = document.createElement('p')
