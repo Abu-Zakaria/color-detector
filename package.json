@@ -1,0 +1,21 @@
+{
+  "name": "color-detector",
+  "version": "0.0.1",
+  "description": "This is a machine learning application which guesses given color's attribute",
+  "main": "main.js",
+  "scripts": {
+    "serve": "webpack serve --content-base dist",
+    "build": "webpack --env production --progress",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.34.0",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "fs": "*"
+  }
+}
