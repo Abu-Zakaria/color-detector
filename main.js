@@ -1,6 +1,6 @@
 import Tensor from './tensor.js'
 
-let database, firebase_init = false;
+let database, tensor, firebase_init = false;
 
 let rgb = {
 	r: '',
@@ -11,8 +11,11 @@ let rgb = {
 function setRandomColor()
 {
 	let r = Math.floor(Math.random() * 255)
+	// let r = Math.floor(Math.random() * (255 - 230) + 230)
 	let g = Math.floor(Math.random() * 255)
+	// let g = Math.floor(Math.random() * (255 - 220) + 220)
 	let b = Math.floor(Math.random() * 255)
+	// let b = Math.floor(Math.random() * (114 - 0) + 0)
 
 	let color_el = document.querySelector('.color-sample #color')
 
@@ -108,16 +111,27 @@ function submitData(button)
 	})
 }
 
-function dumpData()
+export function dumpData()
 {
+	let dumped_data = document.querySelector('#dumped_data')
+	let dumped_data_table = document.querySelector('#dumped_data table tbody')
+	if (document.querySelector("#dumped_data p")) document.querySelector("#dumped_data p").remove()
+
+	dumped_data.querySelector('table tbody').innerHTML = ""
+
 	firebaseInit()
 
 	let colors = []
 
 	database.collection('colors').get()
 		.then(querySnapshot => {
-			let dumped_data_table = document.querySelector('#dumped_data table tbody')
-			
+
+			let counter = document.createElement('p')
+
+			counter.innerHTML = "Total data size: " + querySnapshot.size
+
+			dumped_data_table.appendChild(counter)
+
 			querySnapshot.forEach(doc => {
 				let data = doc.data()
 				console.log(doc.id, ' => ', doc.data())
@@ -128,7 +142,7 @@ function dumpData()
 					b: data.b,
 					label: data.label
 				};
-				colors.push()
+				colors.push(color)
 
 				let content = "id: " + color.id + ", label: " + color.label
 
@@ -145,21 +159,87 @@ function dumpData()
 				tr.style.backgroundColor = data.label
 			})
 
+			dumped_data.querySelector("#raw").innerHTML = JSON.stringify(colors)
 		})
 }
 
+function initGuess()
+{
+}
+
+function initTensor()
+{
+	tensor = new Tensor()
+}
+
+function guestColor(rgb)
+{
+	tensor.guessColor(rgb)
+}
+
+function initTraining()
+{
+	tensor.initTraining()
+}
+
+function colorPickerInit()
+{
+	console.log('color', jscolor.install())
+	let colorpicker = document.querySelector('#colorpicker')
+
+	let rgb = colorpicker.jscolor.toRGBString()
+	rgb = rgb.slice(4, rgb.length - 1)
+	let array = rgb.split(',')
+	let r = array[0]
+	let g = array[1]
+	let b = array[2]
+
+	return {
+		r: r,
+		g: g,
+		b: b
+	}
+}
+
 let start_btn = document.querySelector('#start_btn')
-
-start_btn.addEventListener('click', () => {
-	init()
-})
-
 let dump_btn = document.querySelector('#dump_btn')
+let start_guessing = document.querySelector("#start_guessing")
+let start_training = document.querySelector('#start_training')
+let guess = document.querySelector('#guess')
 
-dump_btn.addEventListener('click', () => {
-	dumpData()
-})
+if(start_btn)
+{
+	start_btn.addEventListener('click', () => {
+		init()
+	})
+}
 
-// let tensor = new Tensor()
+if(dump_btn)
+{
+	dump_btn.addEventListener('click', () => {
+		dumpData()
+	})
+}
 
-// tensor.init()
+if(start_guessing)
+{
+	start_guessing.addEventListener('click', () => {
+		initGuess()
+	})
+}
+
+if(start_training)
+{
+	start_training.addEventListener('click', () => {
+		initTraining()
+	})
+}
+
+if(guess)
+{
+	guess.addEventListener('click', () => {
+		guestColor(colorPickerInit())
+	})
+}
+
+initTensor()

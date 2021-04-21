@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Color detector</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	
+	<div class="container">
+		<h3 class="text-center">Color Detector</h3>
+		<h6 class="text-center">Programmed by <a href="https://www.facebook.com/jakaria.blaine/" target="_blank">cynax</a></h6>
+
+		<div class="text-center">
+			<button class="btn btn-primary" id="start_guessing">Start</button>
+		</div>
+
+		<div class="row mt-5" id="guessing_card" style="display: none">
+			<div class="col-sm-12 col-md-6 offset-md-3">
+				<div class="card">
+					<div class="card-header">Train Color</div>
+					<div class="card-body">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+	     https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
+
+	<!-- tensorflow -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.4.0/tf.min.js" integrity="sha512-6jQOFCf338nZwh1YVmzwzpdPTOkl1RuFXtnXbqCmEkFqVlOj3v7gBNk5FusU3e44DB6REf58f685Xk5aErfFWA==" crossorigin="anonymous"></script>
+
+	<script src="./bundle.js" type="module"></script>
+
+	<script type="text/javascript">
+		
+	</script>
+</body>
+</html>

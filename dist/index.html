@@ -71,8 +71,9 @@
 		<h6 class="text-center">Programmed by <a href="https://www.facebook.com/jakaria.blaine/" target="_blank">cynax</a></h6>
 
 		<div class="text-center">
-			<button class="btn btn-success" id="start_btn">Start Training</button>
-			<button class="btn btn-info" id="dump_btn">Dump data</button>
+			<button class="btn btn-success" id="start_btn">Enter Training Data</button>
+			<a href="./train.html" class="btn btn-info">Start Training</a>
+			<button class="btn btn-info" id="dump_btn" style="display: none">Dump data</button>
 		</div>
 
 		<div class="row mt-5" id="training_card" style="display: none">
@@ -119,6 +120,9 @@
 					
 				</tbody>
 			</table>
+			<div id="raw">
+				
+			</div>
 		</div>
 	</div>
 
@@ -135,6 +139,6 @@
 	<!-- tensorflow -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.4.0/tf.min.js" integrity="sha512-6jQOFCf338nZwh1YVmzwzpdPTOkl1RuFXtnXbqCmEkFqVlOj3v7gBNk5FusU3e44DB6REf58f685Xk5aErfFWA==" crossorigin="anonymous"></script>
 
-	<script src="./bundle.js"></script>
+	<script src="./bundle.js" type="module"></script>
 </body>
 </html>
