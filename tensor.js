@@ -15,6 +15,7 @@ export default class Tensor
 		]
 
 		this.model;
+		this.training = false
 
 		this.training_status = document.querySelector('#training_status')
 	}
@@ -48,6 +49,12 @@ export default class Tensor
 
 	initTraining()
 	{
+		if(this.training)
+		{
+			return false;
+		}
+
+		this.training = true
 		this.training_status.innerHTML = ""
 
 		let _this = this;
@@ -90,7 +97,7 @@ export default class Tensor
 		this.model.add(hidden_layer)
 		this.model.add(output_layer)
 
-		let learning_rate = 0.1
+		let learning_rate = 0.5
 		const optimizer = tf.train.sgd(learning_rate)
 
 		this.model.compile({
@@ -99,7 +106,7 @@ export default class Tensor
 		})
 
 		const options = {
-			epochs: 30,
+			epochs: 40,
 			validationSplit: 0.1,
 			shuffle: true
 		}
@@ -112,6 +119,7 @@ export default class Tensor
 
 			model.save("localstorage://model-x1")
 			training_status.innerHTML = "Training completed!"
+			_this.training = false
 		})
 	}
 
